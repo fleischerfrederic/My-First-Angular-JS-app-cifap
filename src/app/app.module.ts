@@ -5,20 +5,15 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { EditComponent } from './components/edit/edit.component';
-import { AddComponent } from './components/add/add.component';
-import { AddStudentsComponent } from './components/add-students/add-students.component';
-import { EditStudentsComponent } from './components/edit-students/edit-students.component';
+import { EditStudentComponent } from './components/edit-student/edit-student.component';
+import { AddStudentComponent } from './components/add-student/add-student.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DashboardComponent,
-    EditComponent,
-    AddComponent,
-    DashboardComponent,
-    AddStudentsComponent,
-    EditStudentsComponent
+    EditStudentComponent,
+    AddStudentComponent
   ],
   imports: [
     BrowserModule,
