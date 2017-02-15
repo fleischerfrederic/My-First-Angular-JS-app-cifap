@@ -1,5 +1,88 @@
 /* You can add global styles to this file, and also import other style files */
+ @import url('https://fonts.googleapis.com/css?family=Roboto:400,500,700');
+* {
+    margin:0;
+    padding:0;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+}
+
+html{
+    font-size:62.5%;
+}
 
 body{
-    color: blue
+    font-family:'Roboto',sans-serif;
+    font-size:1.5rem;
+}
+
+app-header{
+
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background:#3F51B5;
+    color:white;
+    padding:2rem;
+    z-index:1;
+}
+
+app-header li{
+    display: inline-block;
+    margin-right:1rem;
+    
+}
+
+app-header a{
+    background-color:white;
+    padding:.5rem;
+    color:#3F51B5;
+    text-decoration:none;
+}
+
+h1
+{
+    margin-bottom:1.5rem;
+    text-transform: uppercase;
+    font-size:1.5rem;
+}
+
+app-footer{
+    position:fixed;
+    bottom:0;
+    left:0;
+    width:100%;
+    text-align:center;
+    background-color:#3F51B5;
+    padding:2 rem;
+    color:white;
+}
+
+app-footer a {color:white;}
+
+router-outlet + *{
+    padding:9rem 2rem 4rem 2rem;
+    position:fixed;
+    width:100%;
+    height:100%;
+}
+
+
+app-dashboard article {
+    padding: 2rem;
+    color:white;
+    background: rgba(63,81,181,.5);
+    margin:1rem auto;}
+
+app-dashboard article span{
+
+    position:absolute;
+    right:2erm;
+    background-color:white;
+    color:#3F51B5;
+    text-transform:uppercase;
+    font-size:1rem;
+    font-weight: 700;
+    padding:.5rem 1rem;
 }
