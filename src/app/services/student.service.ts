@@ -1,93 +1,93 @@
-////importer la classe pour configurer le service
+// Importer la class pour configurer un service
 import { Injectable } from '@angular/core';
 
-//importer les classes http et headers
-import { Http, Headers} from '@angular/http';
+// Importer les class Http et Headers
+import { Http, Headers } from '@angular/http';
 
-//importer le systeme de promesse
+// Importer le système de promesse
 import 'rxjs/add/operator/toPromise';
 
-
-//creer et exporter une collection de donnée
+// Créer une collection de données
 export const LIST = [
-    { 
-      id:0,
-      firstName:'Georges',
-      lastName:'Harrisson',
-      state: 1
-
-    },
-    { 
-      id:1,
-      firstName:'Paul',
-      lastName:'mc Cartney',
-      state: 0
-     },
-
-     {
-      id:2,
-      firstName:'John',
-      lastName:'Lennon',
-      state: 2
-      },
-
-     {
-      id:3,
-      firstName:'Ringo',
-      lastName:'Star',
-      state: 0
-    }
+  {
+    id: 0,
+    firstName: 'Georges',
+    lastName: 'Harrison',
+    state: 1
+  },
+  {
+    id: 1,
+    firstName: 'Paul',
+    lastName: 'McCartney',
+    state: 0
+  },
+  {
+    id: 2,
+    firstName: 'John',
+    lastName: 'Lennon',
+    state: 2
+  },
+  {
+    id:3,
+    firstName: 'Ringo',
+    lastName: 'Starr',
+    state: 0
+  }
 ];
 
-
-//utiliser le decorateur @injectable()
+// Utiliser le décorateur @Injectable
 @Injectable()
 
-//exporter la classe du service
+// Exporter la class du service
 export class StudentService {
 
-  constructor(//creer une variable de type Http
-    private http:Http) { }
+  constructor(
+    // Créer une variable de type Http
+    private http: Http
+  ) {}
 
-  
 
- //creer une fonction pour afficher la liste des etudiants
-    showStudentList(): Promise<any[]>{
+  // Créer une fonction pour envoyer la liste des étudiants
+  showStudentList(): Promise<any[]>{
 
-      //renvoyer le contenu de la liste 
-
-      return Promise.resolve(LIST);
-
-     
-    };
-
-    //crer une fonction pour ajouter un etudiant dans la liste 
-
-addStudentInStudentList(formulaire){
-
-  let newStudent={
-       
-      firstName:'Mick',
-      lastName:'Jaegger',
-      state: 0
-
-    };
-
-    //ajouter le nouvel étudiant dans le tableau
-
-    LIST.push(formulaire);
+    // Renvoyer le contenu de LIST
+    return Promise.resolve(LIST);
+    
   };
 
-  //création d'une fonction pour connaitre la taille du tableau LIST
+  // Créer une fonction pour ajouter un étudiant dans la liste
+  addStudentInStudentList(object){
 
-  getListLenght(): Promise<number>{
-
-    return Promise.resolve(LIST.length) ;
+    // Ajouter le nouvel étudiant dans le tableau
+    LIST.push(object);
 
   };
 
-  
+
+  // Création d'une fonction pour connaître la taille du tableau LIST
+  getListLength(): Promise<number>{
+
+    return Promise.resolve(LIST.length);
+
+  };
+
+  // Création d'une fonction pour mettre à jour un item du tableau LIST
+  editStudentList(){
+
+    // Créer une variable pour l'item à modifier
+    let selectedStudent = LIST[0];
+
+    // Modifier le firstName, le lastName et le state de l'item sélectionné
+    selectedStudent.firstName = 'Paul';
+    selectedStudent.lastName = 'Bismut';
+    selectedStudent.state = 0;
+
+  }
+
+
+  // Création d'une fonction pour récupérer les informations d'un étudiant
+  getSelectedStudentInfo(id): Promise<any>{
+    return Promise.resolve(LIST[id]);
+  }
+
 };
-
-
-

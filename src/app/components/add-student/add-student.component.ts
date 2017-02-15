@@ -1,81 +1,71 @@
 import { Component, OnInit } from '@angular/core';
 
-
-
-//importer la classe du service
-import{StudentService} from '../../services/student.service'
-
+// 1# Importer la class du service
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-add-student',
   templateUrl: './add-student.component.html',
 
-    //Ajouter le service dans le tableau des providers
-  providers:[StudentService]
+  // 2# Ajouter le service dans le tableau des providers
+  providers: [StudentService]
+
 })
-
-
-
 export class AddStudentComponent implements OnInit {
 
-  //creer un objet vide qui reprend la structure des objets du service
-
-  newStudent= {
-    id:0,
-    firstName:'',
-    lastName:'',
-    //le type number ne peut pas etre vide
-    state:0
+  // Créer un objet vide qui reprend la stucture des objets du service
+  newStudent =  {
+    id: 0,
+    firstName: '',
+    lastName: '',
+    // Le type number ne peut pas être vide
+    state: 0
   };
-//creation de la variable qui recupere la liste d'etudiant
 
-  myListLenght;
+  // Création d'une variable pour récupérer la taille de la liste d'étudiants
+  myListLength: number;
 
-  // définir une variable pour utiliser le service 
-
+  // 3# Définir une variable pour utiliser le service
   constructor(
-    private studentService:StudentService ) {}
+    private studentService: StudentService
+  ){};
 
-
-
-//creer une fonction pour creer le formulaire
-
-resetInput(){
-  this.newStudent={
-    id:0,
-    firstName:'',
-    lastName:'',
-    state:0,
-  };
-};
-
-    //Creer une fonction pour ajouter un etudiant dans la liste du service
-    addNewStudent(formulaire){
-
-      //appeler la fonction du service en lui envoyant un nouvel objet (formulaire)
-     
-      this.studentService.addStudentInStudentList(formulaire);
-      this.resetInput();
-
-      this.getNextStudentId();
+  // Créer une fonction pour vider le formulaire
+  resetInput(){
+    // Annuler la modification de l'objet par l'utilisateur
+    this.newStudent =  {
+      id: 0,
+      firstName: '',
+      lastName: '',
+      // Le type number ne peut pas être vide
+      state: 0
     };
+  };
 
-    
 
-//cree une fonction pour connaitre la taille du tableau LIST du service
+  // Créer une fonction pour ajouter un étudiant dans la liste du service
+  addNewStudent(object){
+    // Appeler la fonction du service en lui envoyer un nouvel objet
+    this.studentService.addStudentInStudentList(object);
 
-getNextStudentId(){
+    // Vider le formulaire
+    this.resetInput();
 
-  this.studentService.getListLenght().then(number=>this.newStudent.id=number);
-};
+    // Actualiser la valeur de la taille du tableau LIST
+    this.getNextStudentId();
+  };
+
+  // Créer une fonction pour connâitre la taille du tableau LIST du service
+  getNextStudentId(){
+
+    this.studentService.getListLength().then( number => this.newStudent.id = number );
+
+  };
+
 
   ngOnInit() {
-//connaitre la taille du tableau LIST au chargement du composant
-
+    // Connaître la taille du tableau LIST au chargement du composant
     this.getNextStudentId();
-
-
-    
   };
 
 }

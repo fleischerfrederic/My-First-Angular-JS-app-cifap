@@ -1,15 +1,11 @@
-<h2>
- Ajouter un étudiants dans la liste
-</h2>
+<h2>Ajouter un étudiant dans la liste</h2>
 
+<form (submit)="addNewStudent(newStudent)" >
 
+  <input type="text" name="firstname" placeholder="Indiquer un prénom" [(ngModel)]="newStudent.firstName" required>
+  <input type="text" name="lastname" placeholder="Indiquer un nom" [(ngModel)]="newStudent.lastName" required>
+  <input type="number" name="state" placeholder="Indiquer un état" [(ngModel)]="newStudent.state" required>
 
+  <input type="submit" value="Ajouter un étudiant">
 
-<form (submit)="addNewStudent(newStudent)">
-    <input type="text" name="first name" placeholder="indiquer un prenom"[(ngModel)]="newStudent.firstName" required>
-    <input type="text" name="last name" placeholder="indiquer un nom"[(ngModel)]="newStudent.lastName" required>
-    <input type="text" name="state" placeholder="indiquer un etat"[(ngModel)]="newStudent.state" required>
-
-    <input type="submit" value="ajouter un etudiant">
-
-{{myListLenght}}
+</form>
