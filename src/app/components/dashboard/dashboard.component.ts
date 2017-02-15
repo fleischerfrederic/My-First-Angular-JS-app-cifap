@@ -1,46 +1,42 @@
-//importer la classe component pour configurer le composant
-//la classe OnInit permetd'executer du code une fois le composant chargé
-
-
+// Inmporter la class component pour configuer le composant
+// La class OnInit permet d'éxécuter du code une fois que le composant est chargé
 import { Component, OnInit } from '@angular/core';
 
-//importer la classe du service
-import{StudentService} from '../../services/student.service'
+// 1# Importer la class du service
+import { StudentService } from '../../services/student.service';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
 
-  //Ajouter le service dans le tableau des providers
-  providers:[StudentService]
+  // 2# Ajouter le service dans le tableau des providers
+  providers: [StudentService]
+
 })
 
-//pour faire fonctionner OnIniT IL FAUT L4IMPLEMENTER DANS LA CLASSE
+// Pour faire fonctionner OnInit il faut l'implémenter dasn la class
 export class DashboardComponent implements OnInit {
 
-  //creer une variable pour recuper les donnees du service 
-
+  // Créer une variable pour récupérer les données du service
   myStudentList: any[];
 
-// définir une variable pour utiliser le service 
-
+  // 3# Définir une variable pour utiliser le service
   constructor(
-    private studentService:StudentService ) { }
+    private studentService: StudentService
+  ){}
 
-    //creer une fonction pour recuperer la liste des etudiants
-
-    getStudentFromService(){
-      this.studentService.showStudentList().then( data=> this.myStudentList=data);
-    }
-
+  // Créer une fonction pour récupérer la liste des étudiants
+  getStudentFromService(){
+    this.studentService.showStudentList().then( data => this.myStudentList = data );
+  };
 
 
-//LA fonction ngOnInit est executée quand le composant est chargé
-  ngOnInit() { 
-    this.getStudentFromService()
+  // La fonction ngOnInit est exécuter quand la composant est chargé
+  ngOnInit() {
+
+    // Appeler la fonction pour récupérer la liste des étudiants
+    this.getStudentFromService();
+
   }
-  //appeler la fonction pour recupere la liste des etudiants
-
 
 }
-
